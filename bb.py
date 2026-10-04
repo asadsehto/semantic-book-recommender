@@ -2,11 +2,7 @@ import getpass
 import os
 
 if "GOOGLE_API_KEY" not in os.environ:
-    os.environ["GOOGLE_API_KEY"] = getpass.getpass("AIzaSyA9GbupdyU_nusYs4bQhaEF82AUu1FLn64")
-
-
-    # os.environ["LANGSMITH_API_KEY"] = getpass.getpass("Enter your LangSmith API key: ")
-# os.environ["LANGSMITH_TRACING"] = "true"
+    os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter your Google API key: ")
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 
@@ -16,7 +12,6 @@ llm = ChatGoogleGenerativeAI(
     max_tokens=None,
     timeout=None,
     max_retries=2,
-    # other params...
 )
 
 messages = [
@@ -27,5 +22,4 @@ messages = [
     ("human", "I love programming."),
 ]
 ai_msg = llm.invoke(messages)
-ai_msg
 print(ai_msg.content)
